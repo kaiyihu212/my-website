@@ -9,14 +9,22 @@ export const intentions = [
  {id:'confidence',name:'自信',en:'Confidence',color:'#d8bb7b',text:'相信细小的行动，也值得被认真看见。',ritual:'对自己说一句鼓励的话，再迈出一个可以完成的小步骤。'},
  {id:'balance',name:'平衡',en:'Balance',color:'#aab7a3',text:'在付出与休息之间，为自己找到舒适的位置。',ritual:'伸展双肩，问问自己：此刻，我需要多一点什么？'}
 ];
-export const products = [
+const bracelets = [
  {id:'rose',name:'心悦 · 粉晶手链',price:49,material:'粉晶',intention:'love',chakra:'心轮',color:'#dcb7b4',description:'柔和的浅粉色，如同清晨落在肌肤上的光。为日常添一份温柔，也提醒自己值得被善待。'},
  {id:'amethyst',name:'静心 · 紫水晶手链',price:55,material:'紫水晶',intention:'calm',chakra:'顶轮',color:'#a79ab7',description:'轻盈的紫色层次，在举手之间留住安静。把片刻停顿，变成属于自己的小小仪式。'},
  {id:'smoky',name:'安定 · 烟晶手链',price:49,material:'烟晶',intention:'grounding',chakra:'海底轮',color:'#8d7a66',description:'通透的烟茶色，与自然材质自在相配。一件低调的日常饰品，一份回到当下的提醒。'},
  {id:'citrine',name:'微光 · 黄水晶手链',price:59,material:'黄水晶',intention:'confidence',chakra:'太阳神经丛轮',color:'#d7b76e',description:'温润的蜜金色，为简洁穿搭添一束微光。以细微的明亮，陪伴每一次勇敢的开始。'},
  {id:'aquamarine',name:'清语 · 海蓝宝手链',price:65,material:'海蓝宝',intention:'balance',chakra:'喉轮',color:'#a8c5c8',description:'如浅海般清透的蓝，带来视觉上的清新与舒展。留意自己的声音，也为倾听留出空间。'},
  {id:'quartz',name:'澄明 · 白水晶手链',price:49,material:'白水晶',intention:'clarity',chakra:'眉心轮',color:'#dddcd3',description:'清透而克制，在自然光里显出细腻纹理。用简单的佩戴，提醒自己把注意力放回重要的事。'}
-].map(p=>({...p,image:`/products/${p.id}.svg`,sizes:['14 厘米','16 厘米','18 厘米'],stock:12,category:'bracelet',demo:true}));
+].map((p, photoIndex)=>({...p,image:'/photos/catalogue.webp',photoIndex,sizes:['14 厘米','16 厘米','18 厘米'],sizeLabel:'选择手围',sizeHelp:'测量手腕一周，按舒适余量选择',stock:12,category:'bracelet',demo:true}));
+export const categoryNames: Record<string,string> = {bracelet:'水晶手链',sphere:'水晶球',ornament:'水晶摆件'};
+export const products = [...bracelets,
+ {id:'clear-sphere',name:'留白 · 白水晶球',price:89,material:'白水晶',intention:'clarity',chakra:'眉心轮',color:'#dddcd3',description:'透过清透的球体，看见光线缓缓经过的层次。在书架或桌边，留一个让目光歇息的角落。',photoIndex:6,category:'sphere',sizes:['直径 45 毫米','直径 55 毫米'],sizeLabel:'选择直径',sizeHelp:'直径及木托外观均为演示规格'},
+ {id:'rose-sphere',name:'柔光 · 粉晶球',price:79,material:'粉晶',intention:'love',chakra:'心轮',color:'#dcb7b4',description:'柔粉的色泽与木质、亚麻自在相配。把喜欢的小物安放在身边，让家多一分温柔。',photoIndex:7,category:'sphere',sizes:['直径 45 毫米','直径 55 毫米'],sizeLabel:'选择直径',sizeHelp:'直径及木托外观均为演示规格'},
+ {id:'amethyst-cluster',name:'山间 · 紫晶簇摆件',price:99,material:'紫水晶',intention:'calm',chakra:'顶轮',color:'#a79ab7',description:'簇生的晶体与深浅紫色，是自然形态的灵感。适合书桌、床头或静坐角落，每次停留都能看到不同细节。',photoIndex:8,category:'ornament',sizes:['小号 · 约 6–8 厘米','中号 · 约 9–11 厘米'],sizeLabel:'选择规格',sizeHelp:'为演示尺寸，正式销售需逐件核实'}
+].map(p=>({...p,image:'/photos/catalogue.webp',stock:12,demo:true}));
+export type Product = (typeof products)[number];
+
 export const chakras = [
  ['海底轮','安定与归属','#a96b61','烟晶','感受双脚与地面的接触。','smoky'],
  ['脐轮','感受与创造','#ca9977','黄水晶','留意一个让你感到愉悦的细节。','citrine'],

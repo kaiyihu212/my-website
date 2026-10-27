@@ -11,10 +11,13 @@
     "logos": "node scripts/prepare-logos.mjs",
     "predev": "npm run logos",
     "prebuild": "npm run logos",
-    "build:static": "npm run logos && STATIC_EXPORT=1 next build"
+    "build:static": "npm run logos && STATIC_EXPORT=1 next build",
+    "test:static": "TEST_STATIC=1 playwright test",
+    "preview:static": "node scripts/serve-static.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
+    "lunar-typescript": "^1.8.6",
     "next": "^16.4.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
