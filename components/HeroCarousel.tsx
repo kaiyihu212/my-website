@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play } from 'lucide-react';
 
 export const heroScenes = [
-  { id: 'jewelry', name: '随身心意', category: '水晶手链', image: '/photos/jewelry.webp', alt: '暖色自然光下，亚麻和石材上的粉晶手链与水晶球，AI 生成场景示意', lines: ['把心之所向，', '戴在身边。'], description: '以自然水晶为灵感，让每一次佩戴，\n都成为与自己温柔相处的时刻。', href: '/shop?category=bracelet', action: '探索水晶手链', note: '一抹自然色泽，一份随身心意。' },
-  { id: 'home', name: '自然居所', category: '水晶球与摆件', image: '/photos/home.webp', alt: '自然光照亮木架上的白水晶球与紫晶簇，AI 生成居家场景示意', lines: ['让自然之美，', '住进日常。'], description: '一颗水晶球，一簇自然纹理。\n为熟悉的空间，留一处静静喜欢的角落。', href: '/shop?category=sphere', action: '探索水晶球与摆件', note: '在光线停留的地方，安放喜欢。' },
-  { id: 'meditation', name: '静坐时光', category: '冥想与日常', image: '/photos/meditation.webp', alt: '一位身着亚麻衣服的人在有水晶摆件的自然光居室中静坐，AI 生成场景示意', lines: ['留一段时光，', '与自己相处。'], description: '让呼吸慢下来，让心意有处安放。\n把小小的仪式，带进每一天。', href: '/journal/meditation', action: '开启五分钟冥想', note: '不必去远方，此刻就很好。' },
+  { id: 'jewelry', name: '随身心意', category: '水晶手链', image: '/photos/jewelry-editorial.webp', alt: '自然柔光下，肌肤与亚麻衣袖间的粉晶手链佩戴特写，AI 生成示意', lines: ['把心之所向，', '戴在身边。'], description: '以自然水晶为灵感，让每一次佩戴，\n都成为与自己温柔相处的时刻。', href: '/shop?category=bracelet', action: '探索水晶手链', note: '一抹自然色泽，一份随身心意。' },
+  { id: 'home', name: '自然居所', category: '水晶球与摆件', image: '/photos/home-editorial.webp', alt: '浅色石材上的白水晶球、紫晶簇和贝壳，AI 生成居家场景示意', lines: ['让自然之美，', '住进日常。'], description: '一颗水晶球，一簇自然纹理。\n为熟悉的空间，留一处静静喜欢的角落。', href: '/shop?category=sphere', action: '探索水晶球与摆件', note: '在光线停留的地方，安放喜欢。' },
+  { id: 'meditation', name: '静坐时光', category: '冥想与日常', image: '/photos/meditation-editorial.webp', alt: '一位身着亚麻衣服的人在有水晶摆件的自然光居室中静坐，AI 生成场景示意', lines: ['留一段时光，', '与自己相处。'], description: '让呼吸慢下来，让心意有处安放。\n把小小的仪式，带进每一天。', href: '/journal/meditation', action: '开启五分钟冥想', note: '不必去远方，此刻就很好。' },
 ];
 
 export default function HeroCarousel() {

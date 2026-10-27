@@ -31,7 +31,7 @@ test('全站内部链接与产品图片有效',async({page,request})=>{
  await page.goto('/');
  const links = await page.locator('a[href^="/"]').evaluateAll(nodes=>[...new Set(nodes.map(n=>n.getAttribute('href')!))]);
  for(const href of links){const response=await request.get(href);expect(response.status(),href).toBe(200);}
- for(const id of ['rose','amethyst','smoky','citrine','aquamarine','quartz','clear-sphere','rose-sphere','amethyst-cluster']){expect((await request.get(`/product/${id}`)).status()).toBe(200);expect((await request.get('/photos/catalogue.webp')).status()).toBe(200);}
+ for(const id of ['rose','amethyst','smoky','citrine','aquamarine','quartz','clear-sphere','rose-sphere','amethyst-cluster']){expect((await request.get(`/product/${id}`)).status()).toBe(200);expect((await request.get('/photos/catalogue-editorial.webp')).status()).toBe(200);}
 });
 test('手机导航可以展开和收起',async({page,isMobile})=>{
  test.skip(!isMobile,'仅适用于手机导航');await page.goto('/');await page.getByRole('button',{name:'打开导航',exact:true}).click();await expect(page.getByRole('navigation',{name:'移动导航'})).toBeVisible();await page.getByRole('navigation',{name:'移动导航'}).getByRole('link',{name:'水晶商店'}).click();await expect(page).toHaveURL(/\/shop/);await expect(page.getByRole('navigation',{name:'移动导航'})).toHaveCount(0);
