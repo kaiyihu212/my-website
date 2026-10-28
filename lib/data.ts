@@ -1,6 +1,7 @@
 import config from './brand.json';
 export const brand = config;
-export const money = (value:number) => `${brand.currency} ${value.toFixed(2)}`;
+const currencyFormatter = new Intl.NumberFormat(brand.locale, { style:'currency', currency:brand.currency, currencyDisplay:'narrowSymbol', minimumFractionDigits:2, maximumFractionDigits:2 });
+export const money = (value:number) => currencyFormatter.format(value);
 export const intentions = [
  {id:'calm',name:'平静',en:'Calm',color:'#b6a4c0',text:'把片刻安静留给自己，让思绪慢慢沉淀。',ritual:'轻闭双眼，缓慢呼吸五次。无需改变什么，只是留意此刻。'},
  {id:'love',name:'爱与关怀',en:'Love',color:'#d8b5ae',text:'从温柔看待自己开始，练习关怀与联结。',ritual:'写下一件今天感谢自己的小事，把这份善意留在心间。'},
