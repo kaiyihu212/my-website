@@ -9,21 +9,33 @@ export const intentions = [
  {id:'confidence',name:'自信',en:'Confidence',color:'#d8bb7b',text:'相信细小的行动，也值得被认真看见。',ritual:'对自己说一句鼓励的话，再迈出一个可以完成的小步骤。'},
  {id:'balance',name:'平衡',en:'Balance',color:'#aab7a3',text:'在付出与休息之间，为自己找到舒适的位置。',ritual:'伸展双肩，问问自己：此刻，我需要多一点什么？'}
 ];
-const bracelets = [
+export type Product = {
+ id:string; name:string; price:number; material:string; intention:string; chakra:string; color:string; description:string;
+ image:string; photoIndex:number; sizes:string[]; sizeLabel:string; sizeHelp:string; maxQuantity:number; category:'bracelet'|'sphere'|'ornament'|'accessory';
+};
+const bracelets: Product[] = [
  {id:'rose',name:'心悦 · 粉晶手链',price:49,material:'粉晶',intention:'love',chakra:'心轮',color:'#dcb7b4',description:'柔和的浅粉色，如同清晨落在肌肤上的光。为日常添一份温柔，也提醒自己值得被善待。'},
  {id:'amethyst',name:'静心 · 紫水晶手链',price:55,material:'紫水晶',intention:'calm',chakra:'顶轮',color:'#a79ab7',description:'轻盈的紫色层次，在举手之间留住安静。把片刻停顿，变成属于自己的小小仪式。'},
  {id:'smoky',name:'安定 · 烟晶手链',price:49,material:'烟晶',intention:'grounding',chakra:'海底轮',color:'#8d7a66',description:'通透的烟茶色，与自然材质自在相配。一件低调的日常饰品，一份回到当下的提醒。'},
  {id:'citrine',name:'微光 · 黄水晶手链',price:59,material:'黄水晶',intention:'confidence',chakra:'太阳神经丛轮',color:'#d7b76e',description:'温润的蜜金色，为简洁穿搭添一束微光。以细微的明亮，陪伴每一次勇敢的开始。'},
  {id:'aquamarine',name:'清语 · 海蓝宝手链',price:65,material:'海蓝宝',intention:'balance',chakra:'喉轮',color:'#a8c5c8',description:'如浅海般清透的蓝，带来视觉上的清新与舒展。留意自己的声音，也为倾听留出空间。'},
  {id:'quartz',name:'澄明 · 白水晶手链',price:49,material:'白水晶',intention:'clarity',chakra:'眉心轮',color:'#dddcd3',description:'清透而克制，在自然光里显出细腻纹理。用简单的佩戴，提醒自己把注意力放回重要的事。'}
-].map((p, photoIndex)=>({...p,image:'/photos/catalogue-editorial.webp',photoIndex,sizes:['14 厘米','16 厘米','18 厘米'],sizeLabel:'选择手围',sizeHelp:'测量手腕一周，按舒适余量选择',stock:12,category:'bracelet',demo:true}));
-export const categoryNames: Record<string,string> = {bracelet:'水晶手链',sphere:'水晶球',ornament:'水晶摆件'};
-export const products = [...bracelets,
- {id:'clear-sphere',name:'留白 · 白水晶球',price:89,material:'白水晶',intention:'clarity',chakra:'眉心轮',color:'#dddcd3',description:'透过清透的球体，看见光线缓缓经过的层次。在书架或桌边，留一个让目光歇息的角落。',photoIndex:6,category:'sphere',sizes:['直径 45 毫米','直径 55 毫米'],sizeLabel:'选择直径',sizeHelp:'直径及木托外观均为演示规格'},
- {id:'rose-sphere',name:'柔光 · 粉晶球',price:79,material:'粉晶',intention:'love',chakra:'心轮',color:'#dcb7b4',description:'柔粉的色泽与木质、亚麻自在相配。把喜欢的小物安放在身边，让家多一分温柔。',photoIndex:7,category:'sphere',sizes:['直径 45 毫米','直径 55 毫米'],sizeLabel:'选择直径',sizeHelp:'直径及木托外观均为演示规格'},
- {id:'amethyst-cluster',name:'山间 · 紫晶簇摆件',price:99,material:'紫水晶',intention:'calm',chakra:'顶轮',color:'#a79ab7',description:'簇生的晶体与深浅紫色，是自然形态的灵感。适合书桌、床头或静坐角落，每次停留都能看到不同细节。',photoIndex:8,category:'ornament',sizes:['小号 · 约 6–8 厘米','中号 · 约 9–11 厘米'],sizeLabel:'选择规格',sizeHelp:'为演示尺寸，正式销售需逐件核实'}
-].map(p=>({...p,image:'/photos/catalogue-editorial.webp',stock:12,demo:true}));
-export type Product = (typeof products)[number];
+].map((p,photoIndex):Product=>({...p,image:'/photos/catalogue-editorial.webp',photoIndex,sizes:['14 厘米','16 厘米','18 厘米'],sizeLabel:'选择手围',sizeHelp:'测量手腕一周，按舒适余量选择',maxQuantity:12,category:'bracelet'}));
+export const categoryNames: Record<string,string> = {bracelet:'水晶手链',sphere:'水晶球',ornament:'水晶摆件',accessory:'水晶支架'};
+const sphereCollection = [
+ {id:'clear-sphere',name:'留白 · 白水晶球',price:89,material:'白水晶',intention:'clarity',chakra:'眉心轮',color:'#dddcd3',description:'清透的球体与细微纹理，让目光在光线间停留。适合安放在书架、玄关或日常静坐的角落。'},
+ {id:'rose-sphere',name:'柔光 · 粉晶球',price:79,material:'粉晶',intention:'love',chakra:'心轮',color:'#dcb7b4',description:'柔和的浅粉色，与木质和亚麻自在相配。把喜欢的小物安放在身边，让家多一分温柔。'},
+ {id:'amethyst-sphere',name:'暮紫 · 紫水晶球',price:95,material:'紫水晶',intention:'calm',chakra:'顶轮',color:'#a79ab7',description:'深浅相间的紫色，在柔光里显出层次。为书桌或床头留一个安静的视觉重心。'},
+ {id:'smoky-sphere',name:'茶境 · 烟晶球',price:89,material:'烟晶',intention:'grounding',chakra:'海底轮',color:'#8d7a66',description:'烟茶色的通透层次，低调融入大地色的空间。在熟悉的一角，慢慢找回自己的节奏。'},
+ {id:'citrine-sphere',name:'日暖 · 黄水晶球',price:99,material:'黄水晶',intention:'confidence',chakra:'太阳神经丛轮',color:'#d7b76e',description:'淡蜜金色留住温暖的视觉印象。一点克制的明亮，适合搭配原木、石材与浅色织物。'},
+ {id:'aquamarine-sphere',name:'浅海 · 海蓝宝水晶球',price:109,material:'海蓝宝',intention:'balance',chakra:'喉轮',color:'#a8c5c8',description:'浅海般的青蓝色，让空间多一处清新的留白。适合安放在阅读、书写与静坐的日常场景。'}
+].map((p,photoIndex):Product=>({...p,image:'/photos/spheres-accessories.webp',photoIndex,category:'sphere',sizes:['直径 45 毫米','直径 55 毫米'],sizeLabel:'选择直径',sizeHelp:'水晶球单独选购，支架另售；尺寸以商品确认信息为准',maxQuantity:12}));
+export const products: Product[] = [...bracelets,...sphereCollection,
+ {id:'amethyst-cluster',name:'山间 · 紫晶簇摆件',price:99,material:'紫水晶',intention:'calm',chakra:'顶轮',color:'#a79ab7',description:'簇生的晶体与深浅紫色，展现自然形态的灵感。适合书桌、床头或静坐角落。',image:'/photos/catalogue-editorial.webp',photoIndex:8,category:'ornament',sizes:['小号 · 约 6–8 厘米','中号 · 约 9–11 厘米'],sizeLabel:'选择规格',sizeHelp:'每件形态与大小以商品确认信息为准',maxQuantity:12},
+ {id:'sphere-stand',name:'栖石 · 木质水晶支架',price:24,material:'木质 · 胡桃木色',intention:'',chakra:'',color:'#73604d',description:'低矮的环形轮廓，配以沉静的胡桃木色。让水晶球安稳陈列，也让空间保持简洁。可单独选购，任选两颗水晶球可获赠一只。',image:'/photos/spheres-accessories.webp',photoIndex:6,category:'accessory',sizes:['环形款 · 适配 45–55 毫米水晶球'],sizeLabel:'选择规格',sizeHelp:'仅含支架，不含水晶球；适配尺寸以确认信息为准',maxQuantity:12},
+ {id:'rose-tray',name:'拾光 · 粉晶首饰盘',price:119,material:'粉晶',intention:'love',chakra:'心轮',color:'#dcb7b4',description:'柔粉色的浅盘，留住摘下饰品的片刻。戒指、耳饰与手链，在日常里也有一处妥帖的安放。',image:'/photos/spheres-accessories.webp',photoIndex:7,category:'ornament',sizes:['椭圆浅盘 · 约 10 厘米'],sizeLabel:'选择规格',sizeHelp:'仅含首饰盘，搭配饰品不包含在内；规格以确认信息为准',maxQuantity:12},
+ {id:'clear-tray',name:'清屿 · 白水晶首饰盘',price:129,material:'白水晶',intention:'clarity',chakra:'眉心轮',color:'#dddcd3',description:'清透与云雾般的层次，为细小的心爱之物留白。安放在梳妆台或床头，陪伴每一次日常收纳。',image:'/photos/spheres-accessories.webp',photoIndex:8,category:'ornament',sizes:['圆角浅盘 · 约 10 厘米'],sizeLabel:'选择规格',sizeHelp:'仅含首饰盘，搭配饰品不包含在内；规格以确认信息为准',maxQuantity:12}
+];
 
 export const chakras = [
  ['海底轮','安定与归属','#a96b61','烟晶','感受双脚与地面的接触。','smoky'],

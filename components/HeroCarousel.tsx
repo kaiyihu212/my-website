@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play } from 'lucide-react';
 
 export const heroScenes = [
-  { id: 'jewelry', name: '随身心意', category: '水晶手链', image: '/photos/jewelry-editorial.webp', alt: '自然柔光下，肌肤与亚麻衣袖间的粉晶手链佩戴特写，AI 生成示意', lines: ['把心之所向，', '戴在身边。'], description: '以自然水晶为灵感，让每一次佩戴，\n都成为与自己温柔相处的时刻。', href: '/shop?category=bracelet', action: '探索水晶手链', note: '一抹自然色泽，一份随身心意。' },
-  { id: 'home', name: '自然居所', category: '水晶球与摆件', image: '/photos/home-editorial.webp', alt: '浅色石材上的白水晶球、紫晶簇和贝壳，AI 生成居家场景示意', lines: ['让自然之美，', '住进日常。'], description: '一颗水晶球，一簇自然纹理。\n为熟悉的空间，留一处静静喜欢的角落。', href: '/shop?category=sphere', action: '探索水晶球与摆件', note: '在光线停留的地方，安放喜欢。' },
-  { id: 'meditation', name: '静坐时光', category: '冥想与日常', image: '/photos/meditation-editorial.webp', alt: '一位身着亚麻衣服的人在有水晶摆件的自然光居室中静坐，AI 生成场景示意', lines: ['留一段时光，', '与自己相处。'], description: '让呼吸慢下来，让心意有处安放。\n把小小的仪式，带进每一天。', href: '/journal/meditation', action: '开启五分钟冥想', note: '不必去远方，此刻就很好。' },
+  { id: 'jewelry', name: '随身心意', category: '水晶手链', image: '/photos/jewelry-editorial.webp', alt: '自然柔光下，肌肤与亚麻衣袖间的粉晶手链佩戴特写', lines: ['把心之所向，', '戴在身边。'], description: '以自然水晶为灵感，让每一次佩戴，\n都成为与自己温柔相处的时刻。', href: '/shop?category=bracelet', action: '探索水晶手链', note: '一抹自然色泽，一份随身心意。' },
+  { id: 'home', name: '自然居所', category: '水晶球与摆件', image: '/photos/home-editorial.webp', alt: '浅色石材上的白水晶球、紫晶簇和贝壳', lines: ['让自然之美，', '住进日常。'], description: '一颗水晶球，一簇自然纹理。\n为熟悉的空间，留一处静静喜欢的角落。', href: '/shop?category=home', action: '探索水晶球与摆件', note: '在光线停留的地方，安放喜欢。' },
+  { id: 'meditation', name: '静坐时光', category: '冥想与日常', image: '/photos/meditation-editorial.webp', alt: '一位身着亚麻衣服的人在有水晶摆件的自然光居室中静坐', lines: ['留一段时光，', '与自己相处。'], description: '让呼吸慢下来，让心意有处安放。\n把小小的仪式，带进每一天。', href: '/journal/meditation', action: '开启五分钟冥想', note: '不必去远方，此刻就很好。' },
 ];
 
 export default function HeroCarousel() {
@@ -67,7 +67,7 @@ export default function HeroCarousel() {
       onTouchEnd={event => { if (!touch.current) return; const dx = event.changedTouches[0].clientX - touch.current.x; const dy = event.changedTouches[0].clientY - touch.current.y; if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) select(active + (dx < 0 ? 1 : -1)); touch.current = null; }}>
       {heroScenes.map((item, index) => <div key={item.id} className={`hero-photograph ${index === active ? 'is-active' : ''}`} aria-hidden={index !== active}><img src={item.image} alt={index === active ? item.alt : ''} width="1448" height="1086" fetchPriority={index === 0 ? 'high' : 'low'} loading={index === 0 ? 'eager' : 'lazy'}/></div>)}
       <div className="photograph-shade"/>
-      <span className="photo-caption">{scene.note}<small>AI 生成场景示意 · 非实物摄影</small></span>
+      <span className="photo-caption">{scene.note}</span>
       <div className="photo-arrows"><button type="button" aria-label="上一张场景" onClick={() => select(active - 1)}><ArrowLeft size={18}/></button><button type="button" aria-label="下一张场景" onClick={() => select(active + 1)}><ArrowRight size={18}/></button></div>
     </div>
     <span className="sr-only" role="status" aria-live={rotating ? 'off' : 'polite'}>场景 {active + 1}，共 3 张：{scene.name}</span>

@@ -127,3 +127,57 @@
 .chakra-photo .chakra-line{background:#69755b66}
 .chakra-photo .art-label{color:#535d4c}
 .story-hero{background:linear-gradient(90deg,#f5f1e6ed,#f5f1e6d9),url('/photos/shell-study.webp') center 60% / cover}
+
+/* A restrained catalogue and a clear, automatic sphere gift. */
+.stand-offer{display:flex;align-items:center;justify-content:space-between;gap:25px;padding:24px 28px;background:#e9e8de;margin:0 0 30px;border-top:1px solid #9d9d7f36;border-bottom:1px solid #9d9d7f36}
+.stand-offer .eyebrow{font-size:8px;margin-bottom:6px}
+.stand-offer h3{font-size:20px;margin:0 0 7px;letter-spacing:1px}
+.stand-offer p:last-child{font-size:10px;color:var(--muted);margin:0;line-height:1.9}
+.stand-offer>.text-link{flex-shrink:0;font-size:10px}
+.stand-offer.compact{display:block;padding:19px 20px;margin:24px 0}
+.stand-offer.compact h3{font-size:17px}
+.stand-offer.compact>.text-link{margin-top:10px}
+.purchase-row{margin-top:22px}
+.product-reference{margin:17px 0 22px}
+.bag-offer-status{display:block;padding:19px 21px;background:#e7e9df;margin-bottom:24px}
+.bag-offer-status strong{display:block;font-weight:400;font-size:13px;letter-spacing:.5px}
+.bag-offer-status>span{display:block;font-size:10px;color:var(--muted);margin-top:7px;line-height:1.9}
+.gift-badge{display:block;font-size:9px;letter-spacing:1px;color:#637057;margin-bottom:7px}
+.gift-item{background:#eceee450;padding-left:10px;padding-right:10px}
+.gift-item .bag-item-end small{font-size:10px;color:#667153}
+.order-summary .stand-discount{color:#62704f}
+.checkout-unavailable{opacity:1!important;background:#d7cdbd!important;border-color:#d7cdbd!important;color:#655746!important;transform:none!important}
+.checkout-availability{font-size:11px;color:var(--muted);margin:18px 0 10px;line-height:2}
+.newsletter-coming>p{font-size:10px;margin-top:12px}
+.chakra-basics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;margin-bottom:25px}
+.chakra-basics h2{font-size:21px;margin-bottom:10px;letter-spacing:.5px}
+.chakra-basics p{font-size:12px;color:var(--muted);line-height:2.2;margin:0}
+.chakra-reading-hint{font-size:11px;color:var(--muted);margin:25px 0 30px}
+.chakra-guide-item{padding:0;border-top:1px solid var(--line)}
+.chakra-guide-item summary{display:grid;grid-template-columns:35px 18px 1fr 165px 18px;gap:23px;padding:27px 5px;align-items:center}
+.chakra-guide-number{font-family:Georgia,serif;font-size:13px;color:#9d896e}
+.chakra-guide-dot{width:11px;height:11px;border-radius:50%;opacity:.8}
+.chakra-guide-name strong{display:block;font-family:var(--serif);font-size:23px;font-weight:400;letter-spacing:1px}
+.chakra-guide-name small{font-size:11px;letter-spacing:.6px;color:var(--muted)}
+.chakra-guide-location{font-size:11px;color:var(--muted)}
+.chakra-guide-item summary>svg{transition:transform .3s}
+.chakra-guide-item[open] summary>svg{transform:rotate(180deg)}
+.chakra-guide-body{display:grid;grid-template-columns:1.1fr 1fr;gap:12%;padding:0 45px 32px 104px}
+.chakra-guide-body p{font-size:13px;margin:0;line-height:2.2}
+.chakra-guide-body .chakra-guide-description{color:var(--brown);font-family:var(--serif);font-size:17px;line-height:2}
+.chakra-question{border-left:1px solid #bca989;padding-left:17px;margin-top:22px}
+.chakra-question>span{font-size:9px;letter-spacing:2px;color:#8b775a}
+.chakra-question>p{margin-top:8px;font-size:12px}
+.chakra-practice{padding-top:3px}
+.chakra-practice .eyebrow{font-size:9px}
+.chakra-practice>p{font-size:12px;margin:10px 0}
+.chakra-practice .chakra-crystal{font-size:10px;color:var(--muted);margin-top:17px}
+.chakra-culture-note{font-size:10px;color:var(--muted);line-height:2.2;margin:28px 0 0;max-width:850px}
+@media(max-width:800px){.stand-offer{gap:15px;padding:21px}.stand-offer h3{font-size:18px}.chakra-basics{gap:22px}.chakra-basics h2{font-size:19px}.chakra-basics p{font-size:11px}.chakra-guide-item summary{gap:16px;grid-template-columns:25px 14px 1fr 135px 18px}.chakra-guide-name strong{font-size:21px}.chakra-guide-body{padding-left:79px;gap:8%;padding-right:20px}.chakra-guide-body .chakra-guide-description{font-size:16px}}
+@media(max-width:540px){.stand-offer{display:block;padding:21px 19px;margin-bottom:25px}.stand-offer h3{font-size:18px;line-height:1.8}.stand-offer>.text-link{margin-top:13px}.stand-offer p:last-child{font-size:10px}.stand-offer.compact{margin:20px 0}.stand-offer.compact h3{font-size:16px}.bag-offer-status{padding:17px}.bag-offer-status strong{font-size:12px;line-height:2}.bag-offer-status>span{font-size:9px}.gift-item{padding-left:8px;padding-right:8px}.gift-badge{font-size:8px}.chakra-basics{grid-template-columns:1fr;gap:25px;padding:26px 0}.chakra-basics h2{font-size:21px;margin-bottom:6px}.chakra-basics p{font-size:12px}.chakra-reading-hint{font-size:11px;line-height:2.1;margin-bottom:24px}.chakra-guide-item summary{grid-template-columns:22px 10px 1fr 17px;gap:10px;padding:22px 0}.chakra-guide-number{font-size:11px;grid-row:1/3}.chakra-guide-dot{width:8px;height:8px;grid-row:1/3}.chakra-guide-name{grid-column:3}.chakra-guide-name strong{font-size:22px}.chakra-guide-name small{font-size:10px}.chakra-guide-location{font-size:10px;grid-column:3;grid-row:2}.chakra-guide-item summary>svg{grid-column:4;grid-row:1/3}.chakra-guide-body{grid-template-columns:1fr;gap:25px;padding:0 0 25px 42px}.chakra-guide-body .chakra-guide-description{font-size:17px}.chakra-question{margin-top:18px}.chakra-practice>p{font-size:12px}.chakra-culture-note{font-size:10px}}
+/* Keep interactive hit areas fixed while their imagery floats into view. */
+a.reveal-pending,.product-card.reveal-pending{transform:none}
+a.reveal-pending .collection-image img,.product-card.reveal-pending .catalogue-photo{transform:translateY(24px);transition:transform .85s cubic-bezier(.21,.65,.25,1) var(--reveal-delay,0ms)}
+a.reveal-pending.reveal-visible .collection-image img,.product-card.reveal-pending.reveal-visible .catalogue-photo{transform:translateY(0)}
+.product-info>a{display:block}
+@media(prefers-reduced-motion:reduce){a.reveal-pending .collection-image img,.product-card.reveal-pending .catalogue-photo{transform:none!important;transition:none!important}}

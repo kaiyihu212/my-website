@@ -1,0 +1,17 @@
+'use client';
+import Link from 'next/link';
+import { ArrowRight, ArrowUpRight, Minus, Plus, ShoppingBag as BagIcon } from 'lucide-react';
+import { money, products } from '@/lib/data';
+import { priceCart, standOffer, type CartItem } from '@/lib/cart';
+import ProductPhoto from './ProductPhoto';
+
+type Props = { bag:CartItem[]; loaded:boolean; checkout:boolean; onChange:(id:string,size:string,delta:number)=>void; onRemove:(id:string,size:string)=>void };
+export default function ShoppingBag({bag,loaded,checkout,onChange,onRemove}:Props) {
+ const summary = priceCart(bag);
+ return <div className="section bag-page"><div className="page-heading"><p className="eyebrow">把喜欢的心意，留在身边</p><h1>{checkout?'确认选购清单':'你的购物袋'}</h1><p>{checkout?'在线支付暂未开放，当前可以浏览商品并保存购物袋。':'每一件小小的喜欢，都值得认真挑选。'}</p></div>
+ {!loaded?<p role="status">正在读取购物袋…</p>:!bag.length?<div className="empty-state"><BagIcon size={40}/><h2>购物袋还留着一份空白。</h2><p>去看看，哪一种水晶让你愿意停留。</p><Link href="/shop" className="button">探索水晶系列<ArrowRight size={16}/></Link></div>:<div className="bag-layout"><div>
+ <aside className="bag-offer-status" aria-live="polite"><strong>{summary.eligible?'已享木质支架赠礼':`再选 ${summary.remainingSpheres} 颗水晶球，即可获赠木质支架`}</strong><span>{standOffer.terms}</span></aside>
+ {bag.map(item=>{const p=products.find(p=>p.id===item.id)!;return <article className="bag-item" key={item.id+item.size}><Link className="bag-product-image" href={`/product/${p.id}`}><ProductPhoto product={p}/></Link><div><Link href={`/product/${p.id}`}><h3>{p.name}</h3></Link><p>{item.size} · {money(p.price)}</p>{summary.discount>0&&p.id===standOffer.standId&&<span className="gift-badge">其中一只享赠礼减免</span>}<div className="quantity"><button disabled={item.quantity<=1} aria-label={`减少${p.name}数量`} onClick={()=>onChange(p.id,item.size,-1)}><Minus size={14}/></button><span>{item.quantity}</span><button disabled={item.quantity>=p.maxQuantity} aria-label={`增加${p.name}数量`} onClick={()=>onChange(p.id,item.size,1)}><Plus size={14}/></button></div></div><div className="bag-item-end"><b>{money(p.price*item.quantity)}</b><button aria-label={`移除${p.name}`} onClick={()=>onRemove(p.id,item.size)}>移除</button></div></article>})}
+ {summary.giftQuantity>0&&<article className="bag-item gift-item" aria-label="木质支架赠礼"><Link className="bag-product-image" href={`/product/${summary.stand.id}`}><ProductPhoto product={summary.stand}/></Link><div><span className="gift-badge">随选赠礼</span><Link href={`/product/${summary.stand.id}`}><h3>{summary.stand.name}</h3></Link><p>一只 · 随水晶球数量自动调整</p></div><div className="bag-item-end"><b>{money(0)}</b><small>赠礼</small></div></article>}
+ <Link href="/shop" className="text-link">继续挑选<ArrowUpRight size={16}/></Link></div><aside className="order-summary"><h2>心意清单</h2><div><span>商品小计（{summary.quantity} 件）</span><span>{money(summary.subtotal)}</span></div>{summary.discount>0&&<div className="stand-discount"><span>支架礼遇 · 一只</span><span>− {money(summary.discount)}</span></div>}{summary.giftQuantity>0&&<div><span>木质支架赠礼 × 1</span><span>{money(0)}</span></div>}<div><span>配送费用</span><span>支付开放时确认</span></div><div className="total"><b>商品金额</b><b>{money(summary.total)}</b></div><p>不含运费。商品图片仅作款式与色彩参考，材质、规格及最终金额以选购确认信息为准。</p>{checkout?<><button className="button checkout-unavailable" type="button" disabled>在线支付暂未开放</button><p className="checkout-availability">本页不会创建订单、扣款或安排配送。购物袋将保留，方便你下次继续挑选。</p><Link href="/bag" className="text-link">返回购物袋<ArrowRight size={15}/></Link></>:<Link href="/checkout" className="button">查看选购清单<ArrowRight size={16}/></Link>}</aside></div>}</div>;
+}
