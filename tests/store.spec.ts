@@ -18,11 +18,11 @@ test('商品筛选、搜索、排序与心意交互',async({page})=>{
 });
 test('购物袋增减、刷新保存、移除与未开放支付',async({page})=>{
  await page.goto('/product/rose');await page.getByRole('button',{name:'18 厘米',exact:true}).click();await page.getByRole('button',{name:'增加购买数量'}).click();await page.getByRole('button',{name:'加入购物袋',exact:true}).click();
- await page.goto('/bag');await expect(page.locator('.bag-item')).toContainText('18 厘米');await expect(page.locator('.total')).toContainText('98.00');
- await page.reload();await expect(page.locator('.total')).toContainText('98.00');await page.getByRole('button',{name:'减少心悦 · 粉晶手链数量'}).click();await expect(page.locator('.total')).toContainText('49.00');
+ await page.goto('/bag');await expect(page.locator('.bag-item')).toContainText('18 厘米');await expect(page.locator('.total')).toContainText('392.00');
+ await page.reload();await expect(page.locator('.total')).toContainText('392.00');await page.getByRole('button',{name:'减少心悦 · 粉晶手链数量'}).click();await expect(page.locator('.total')).toContainText('196.00');
  await page.getByRole('button',{name:'移除心悦 · 粉晶手链'}).click();await expect(page.getByText('购物袋还留着一份空白。')).toBeVisible();
- await page.goto('/product/amethyst');await page.getByRole('button',{name:'加入购物袋',exact:true}).click();await page.goto('/bag');await page.getByRole('link',{name:'查看选购清单'}).click();await expect(page.locator('.total')).toContainText('55.00');
- await expect(page.getByRole('button',{name:'在线支付暂未开放',exact:true})).toBeDisabled();await page.reload();await expect(page.locator('.total')).toContainText('55.00');
+ await page.goto('/product/amethyst');await page.getByRole('button',{name:'加入购物袋',exact:true}).click();await page.goto('/bag');await page.getByRole('link',{name:'查看选购清单'}).click();await expect(page.locator('.total')).toContainText('220.00');
+ await expect(page.getByRole('button',{name:'在线支付暂未开放',exact:true})).toBeDisabled();await page.reload();await expect(page.locator('.total')).toContainText('220.00');
 });
 test('订阅未开放时不会收集邮箱',async({page})=>{
  await page.goto('/');await expect(page.getByLabel('你的电子邮箱',{exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'订阅暂未开放'})).toBeDisabled();

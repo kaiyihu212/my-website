@@ -96,7 +96,7 @@ test('水晶球与摆件筛选、规格与购物袋', async ({page}) => {
   await expect(page).toHaveURL(/product\/clear-sphere/);
   await page.getByRole('button',{name:'直径 55 毫米',exact:true}).click();
   await page.getByRole('button',{name:'加入购物袋',exact:true}).click();
-  await page.goto('/bag');await expect(page.locator('.bag-item')).toContainText('直径 55 毫米');await expect(page.locator('.total')).toContainText('89.00');
+  await page.goto('/bag');await expect(page.locator('.bag-item')).toContainText('直径 55 毫米');await expect(page.locator('.total')).toContainText('356.00');
   await page.goto('/shop?category=ornament');await expect(page.locator('.product-card')).toHaveCount(3);
   await expect(page.locator('.product-card').first()).toContainText('山间');
 });

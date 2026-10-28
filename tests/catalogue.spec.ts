@@ -4,29 +4,29 @@ import { products } from '../lib/data';
 const item=(id:string,quantity=1)=>({id,quantity,size:products.find(product=>product.id===id)!.sizes[0]});
 
 test('支架赠礼金额、门槛、单独选购与重复赠礼规则',()=>{
- expect(priceCart([item('sphere-stand')])).toMatchObject({total:24,discount:0,giftQuantity:0});
- expect(priceCart([item('clear-sphere')])).toMatchObject({total:89,eligible:false,giftQuantity:0});
- expect(priceCart([item('clear-sphere'),item('rose-sphere')])).toMatchObject({total:168,eligible:true,giftQuantity:1,discount:0});
- expect(priceCart([item('clear-sphere',2)])).toMatchObject({total:178,giftQuantity:1});
- expect(priceCart([item('clear-sphere',4)])).toMatchObject({total:356,giftQuantity:1});
- expect(priceCart([item('clear-sphere'),item('rose-sphere'),item('sphere-stand')])).toMatchObject({subtotal:192,total:168,discount:24,giftQuantity:0});
- expect(priceCart([item('clear-sphere',2),item('sphere-stand',2)])).toMatchObject({subtotal:226,total:202,discount:24,giftQuantity:0});
- expect(priceCart([item('clear-sphere'),item('sphere-stand')])).toMatchObject({total:113,discount:0,giftQuantity:0});
+ expect(priceCart([item('sphere-stand')])).toMatchObject({total:96,discount:0,giftQuantity:0});
+ expect(priceCart([item('clear-sphere')])).toMatchObject({total:356,eligible:false,giftQuantity:0});
+ expect(priceCart([item('clear-sphere'),item('rose-sphere')])).toMatchObject({total:672,eligible:true,giftQuantity:1,discount:0});
+ expect(priceCart([item('clear-sphere',2)])).toMatchObject({total:712,giftQuantity:1});
+ expect(priceCart([item('clear-sphere',4)])).toMatchObject({total:1424,giftQuantity:1});
+ expect(priceCart([item('clear-sphere'),item('rose-sphere'),item('sphere-stand')])).toMatchObject({subtotal:768,total:672,discount:96,giftQuantity:0});
+ expect(priceCart([item('clear-sphere',2),item('sphere-stand',2)])).toMatchObject({subtotal:904,total:808,discount:96,giftQuantity:0});
+ expect(priceCart([item('clear-sphere'),item('sphere-stand')])).toMatchObject({total:452,discount:0,giftQuantity:0});
  expect(priceCart([item('rose'),item('rose-tray')])).toMatchObject({sphereQuantity:0,eligible:false,giftQuantity:0});
  expect(priceCart([{...item('clear-sphere'),quantity:-2},{...item('rose-sphere'),quantity:100},{...item('clear-sphere'),size:'不存在'}])).toMatchObject({total:0,eligible:false});
 });
 
 test('混选两颗球自动赠支架，刷新后保留，减少数量后取消赠礼',async({page})=>{
  for(const id of ['clear-sphere','rose-sphere']){await page.goto(`/product/${id}`);await page.getByRole('button',{name:'加入购物袋',exact:true}).click();}
- await page.goto('/bag');await expect(page.getByRole('article',{name:'木质支架赠礼'})).toHaveCount(1);await expect(page.locator('.total')).toContainText('168.00');
+ await page.goto('/bag');await expect(page.getByRole('article',{name:'木质支架赠礼'})).toHaveCount(1);await expect(page.locator('.total')).toContainText('672.00');
  await page.reload();await expect(page.getByRole('article',{name:'木质支架赠礼'})).toHaveCount(1);
- await page.getByRole('button',{name:'移除柔光 · 粉晶球'}).click();await expect(page.getByRole('article',{name:'木质支架赠礼'})).toHaveCount(0);await expect(page.locator('.bag-offer-status')).toContainText('再选 1 颗');await expect(page.locator('.total')).toContainText('89.00');
+ await page.getByRole('button',{name:'移除柔光 · 粉晶球'}).click();await expect(page.getByRole('article',{name:'木质支架赠礼'})).toHaveCount(0);await expect(page.locator('.bag-offer-status')).toContainText('再选 1 颗');await expect(page.locator('.total')).toContainText('356.00');
 });
 
 test('已有付费支架时自动减免，取消资格后恢复单买价格',async({page})=>{
  for(const id of ['sphere-stand','clear-sphere']){await page.goto(`/product/${id}`);if(id==='clear-sphere')await page.getByRole('button',{name:'增加购买数量'}).click();await page.getByRole('button',{name:'加入购物袋',exact:true}).click();}
- await page.goto('/bag');await expect(page.locator('.stand-discount')).toContainText('24.00');await expect(page.getByRole('article',{name:'木质支架赠礼'})).toHaveCount(0);await expect(page.locator('.total')).toContainText('178.00');
- await page.getByRole('button',{name:'减少留白 · 白水晶球数量'}).click();await expect(page.locator('.stand-discount')).toHaveCount(0);await expect(page.locator('.total')).toContainText('113.00');
+ await page.goto('/bag');await expect(page.locator('.stand-discount')).toContainText('96.00');await expect(page.getByRole('article',{name:'木质支架赠礼'})).toHaveCount(0);await expect(page.locator('.total')).toContainText('712.00');
+ await page.getByRole('button',{name:'减少留白 · 白水晶球数量'}).click();await expect(page.locator('.stand-discount')).toHaveCount(0);await expect(page.locator('.total')).toContainText('452.00');
 });
 
 test('六色水晶球、支架与首饰盘可浏览',async({page})=>{
